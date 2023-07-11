@@ -3,29 +3,14 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "plugin:@next/next/recommended",
-    "prettier"
-  ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": "latest",
-    "sourceType": "module"
-  },
+  "extends": ["next","airbnb", "prettier"],
   "plugins": ["react", "prettier"],
-
+  "parser": "@typescript-eslint/parser",
   "rules": {
     "prettier/prettier": ["error"],
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off",
+    "react/jsx-filename-extension": [2, { "extensions": [".tsx"] }],
     "react/jsx-props-no-spreading": "off",
-    "no-undef": "off",
-    "import/no-unresolved": "off",
-    "import/extensions": "off",
-    "jsx-a11y/anchor-is-valid": "off"
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }
