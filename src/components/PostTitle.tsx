@@ -1,8 +1,9 @@
 
-
 const PostTitle = () => {
   return (
-    <div>PostTitle</div>
+    <div>
+       title
+    </div>
   )
 }
 
