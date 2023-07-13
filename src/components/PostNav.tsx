@@ -1,5 +1,6 @@
 import blogIcon from "../../public/blog.svg";
 import Image from "next/image";
+import Department from "./Department";
 
 const PostNav = () => {
 	return (
@@ -36,10 +37,7 @@ const PostNav = () => {
 					</button>
 					<div className="border-l border-gray-500 h-16"></div>
 
-					<a className="btn btn-ghost normal-case text-xl">
-						<Image src={blogIcon} alt="blogIcon" width={40} height={50} />
-						المدونة
-					</a>
+					<Department from="nav" />
 				</div>
 				<div className="flex-none">
 					<button className="btn btn-outline btn-warning">Share</button>
