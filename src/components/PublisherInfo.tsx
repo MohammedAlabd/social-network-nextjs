@@ -8,7 +8,7 @@ const PublisherInfo = () => {
 			{/* profile picture and name */}
 			<div className="flex">
 				<ProfilePicture from="blog" />
-				<div className="flex flex-col mt-3">
+				<div className="flex flex-col">
 					{/* name of publisher */}
 					<Link href={"/post"} className="text-xl mb-1"> محمود عبدالباري </Link>
 					{/* membership */}
