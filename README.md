@@ -36,3 +36,36 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+##Testing
+
+run the test using this command 
+
+```bash
+npx playwright test
+
+```
+Tests are run in headless mode meaning no browser will open up when running the tests. Results of the tests and test logs will be shown in the terminal.
+
+Run your tests with UI Mode 
+```bash
+npx playwright test --ui
+
+```
+
+Test Reports
+
+```bash
+npx playwright show-report
+
+```
+Running a single test file
+
+```bash
+npx playwright test landing-page.spec.ts
+
+```
+
+you can check playwright docs running tests
+[here](https://playwright.dev/docs/running-tests)
+
