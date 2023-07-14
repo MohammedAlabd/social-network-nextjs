@@ -12,7 +12,7 @@ const PublisherInfo = () => {
 					{/* name of publisher */}
 					<Link href={"/post"} className="text-xl mb-1"> محمود عبدالباري </Link>
 					{/* membership */}
-					<Link href={"/post"} className="text-l"> member </Link>
+					<Link href={"/post"} className="text-l"> very admin </Link>
 				</div>
 			</div>
 			{/* department of publisher */}

@@ -1,0 +1,56 @@
+
+{
+  "post": {
+    "id": 1,
+    "user": {
+      "id": 1,
+      "name": "John Doe",
+      "username": "johndoe",
+      "profilePicture": "path/to/profile_picture.jpg"
+    },
+    "content": [
+      {
+        "type": "title",
+        "text": "صورت نفسي باخر لحظة"
+      },
+      {
+        "type": "text",
+        "text": "مو اسف ولا ندمان وانسه البينا نعيده"
+      },
+      {
+        "type": "photo",
+        "photoPath": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
+      },
+      {
+        "type": "url",
+        "url": "https://www.example.com"
+      }
+    ],
+    "likes": [
+      {
+        "id": 1,
+        "userId": 2,
+        "username": "janedoe"
+      },
+      {
+        "id": 2,
+        "userId": 3,
+        "username": "marysmith"
+      }
+    ],
+    "comments": [
+      {
+        "id": 1,
+        "userId": 2,
+        "username": "janedoe",
+        "content": "Great post!"
+      },
+      {
+        "id": 2,
+        "userId": 3,
+        "username": "marysmith",
+        "content": "Keep it up!"
+      }
+    ]
+  }
+}

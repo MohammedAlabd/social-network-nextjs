@@ -1,5 +1,5 @@
+import PostBody from "@/components/PostBody";
 import PostNav from "@/components/PostNav";
-import PostTitle from "@/components/PostTitle";
 import PublisherInfo from "@/components/PublisherInfo";
 
 const post = () => {
@@ -8,7 +8,7 @@ const post = () => {
 			<PostNav />
 			<div className="ml-72 mt-16 mb-10">
 				<PublisherInfo />
-				<PostTitle />
+				<PostBody />
 			</div>
 		</div>
 	);
