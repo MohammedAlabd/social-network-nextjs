@@ -11,6 +11,18 @@
     "react/jsx-filename-extension": [2, { "extensions": [".tsx"] }],
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/no-noninteractive-tabindex": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
   }
+    ]
+}
 }
