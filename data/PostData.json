@@ -1,30 +1,18 @@
-
 {
   "post": {
     "id": 1,
     "user": {
       "id": 1,
-      "name": "John Doe",
-      "username": "johndoe",
-      "profilePicture": "path/to/profile_picture.jpg"
+      "name": "محمود عبدالباري",
+      "username": "mahmood83367",
+      "profilePicture": "profile.jpg",
+      "membership": "very admin"
     },
     "content": [
-      {
-        "type": "title",
-        "text": "صورت نفسي باخر لحظة"
-      },
-      {
-        "type": "text",
-        "text": "مو اسف ولا ندمان وانسه البينا نعيده"
-      },
-      {
-        "type": "photo",
-        "photoPath": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
-      },
-      {
-        "type": "url",
-        "url": "https://www.example.com"
-      }
+      "<div className='font-extrabold'> باخر لحظة كدرت اصور </div>",
+      "<h1 className='font-bold text-xl'> Test arabic and english </h1>",
+      "<p> معليكم بالفوك هاي هيج بس </p>",
+      "<img src='/profile.jpg' alt='img' />"
     ],
     "likes": [
       {
@@ -51,6 +39,12 @@
         "username": "marysmith",
         "content": "Keep it up!"
       }
-    ]
+    ],
+    "SectionInfo":{
+      "SectionName":"المدونة",
+      "SectionUrl":"localhost:3000/mawdawna/feed",
+      "SectionPhoto":"/blog.svg"
+
+    }
   }
 }
