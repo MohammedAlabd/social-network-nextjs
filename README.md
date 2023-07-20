@@ -37,7 +37,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-##Testing
+## Testing
 
 run the test using this command 
 
@@ -69,3 +69,16 @@ npx playwright test landing-page.spec.ts
 you can check playwright docs running tests
 [here](https://playwright.dev/docs/running-tests)
 
+## I18next Configuration
+
+-i18n.js - Contains the i18next configuration settings.
+
+-locales/ - Directory containing translation files for each supported language.
+
+en/ - English translations (example: common.json, page1.json, etc.).
+ar/ - arabic translations (example: common.json, page1.json, etc.).
+Add more language directories as needed.
+
+-Use i18next's useTranslation hook to access translations in your components
+
+const { t, i18n } = useTranslation('common')
