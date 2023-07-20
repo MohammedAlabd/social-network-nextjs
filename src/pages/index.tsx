@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import '@/styles/globals.css';
 import { useRouter } from 'next/router';
 
 import { useTranslation, Trans } from 'next-i18next';
