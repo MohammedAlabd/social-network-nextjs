@@ -1,10 +1,11 @@
 import React from 'react'
+import Image from 'next/image';
 
 type MenuItemProps = {
-  icon:JSX.Element;
+  icon:string;
   title: string;
   action: () => void;
-  isActive?: (() => boolean) | null | undefined;
+  isActive?: (() => boolean);
 };
 const MenuItem: React.FC<MenuItemProps> = ({ icon, title, action, isActive }) => (
   <div className="tooltip tooltip-bottom" data-tip={title}>
@@ -13,9 +14,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ icon, title, action, isActive }) =>
       onClick={action}
       title={title}
     >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        {icon}
-      </svg>
+      <Image src={icon}   alt={title}/>
     </button>
   </div>
 );

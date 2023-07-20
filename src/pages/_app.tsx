@@ -1,6 +1,6 @@
 
 import '@/styles/globals.css'
-import '@/styles/tiptap.css'
+import '@/styles/RichTextEditor.css'
 import type { AppProps } from 'next/app'
 
 

@@ -41,8 +41,6 @@
     "prettier-plugin-tailwindcss": "^0.3.0",
      "@playwright/test": "^1.35.1",
     "typescript": "^5.0.4"
-
-
   }
  
   }
