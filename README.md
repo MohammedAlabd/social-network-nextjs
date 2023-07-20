@@ -79,6 +79,7 @@ en/ - English translations (example: common.json, page1.json, etc.).
 ar/ - arabic translations (example: common.json, page1.json, etc.).
 Add more language directories as needed.
 
+<<<<<<< HEAD
 - You can also add files for each page you want in the ar/en folders 
 
 ├── locales/
@@ -125,3 +126,8 @@ const { t, i18n } = useTranslation('common')
   <h1>{t('header.home')}</h1>
 
 -Use understanable words and sentences for the tranlations files 
+=======
+-Use i18next's useTranslation hook to access translations in your components
+
+const { t, i18n } = useTranslation('common')
+>>>>>>> 9b03c21... doc(Readme file ) : adding the i18next configuration to the readme file
