@@ -1,5 +1,6 @@
 import LoginBtn from '@/components/login-btn';
 import Head from 'next/head';
+import '@/styles/globals.css';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 
