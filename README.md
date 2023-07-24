@@ -79,34 +79,6 @@ en/ - English translations (example: common.json, page1.json, etc.).
 ar/ - arabic translations (example: common.json, page1.json, etc.).
 Add more language directories as needed.
 
-<<<<<<< HEAD
-- You can also add files for each page you want in the ar/en folders 
-
-├── locales/
-  │   │   ├── en/
-  │   │   │   ├── common.json
-  │   │   │   ├── header.json
-  │   │   │   └── footer.json
-  │   │   ├── ar/
-  │   │   │   ├── common.json
-  │   │   │   ├── header.json
-  │   │   │   └── footer.json
-  │   │   |
-
-  
-  - When you add new file you should import it in the place you are using in the getStaticProps and in the useTranslation ( it should be written as an array [] )
-
-  const { t} = useTranslation(['common','header','footer'])
-  export const getStaticProps: GetStaticProps = async ({
-  locale,
-}) => ({
-  props: {
-    ...(await serverSideTranslations(locale ?? 'en', [
-      'common','header','footer'
-    ])),
-  },
-})
-
 -Use i18next's useTranslation hook to access translations in your components
 
 const { t, i18n } = useTranslation('common')
@@ -131,3 +103,19 @@ const { t, i18n } = useTranslation('common')
 
 const { t, i18n } = useTranslation('common')
 >>>>>>> 9b03c21... doc(Readme file ) : adding the i18next configuration to the readme file
+
+-When you have nested json file  for example this json :
+{
+    "header": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "language": "Language",
+    "selectLanguage": "Select Language"
+  },
+}
+
+ you are goinig to call it for translation like this 
+  <h1>{t('header.home')}</h1>
+
+-Use understanable words and sentences for the tranlations files 
