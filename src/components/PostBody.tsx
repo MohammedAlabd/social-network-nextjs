@@ -1,27 +1,16 @@
-import PostTitle from "./PostTitle"
-import DemoData from "../../data/PostData.json"
-import TextBody from "./TextBody";
-import PostImage from "./PostImage";
+import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+// import { sanitize } from 'dompurify';
 
-const PostBody = () => {
-    const post = DemoData.post
-  return (
-    <div>
-        {post.content.map((item, index) => {
-        if (item.type === "title") {
-          return <PostTitle text = {item.text} key={index}  />;
-        }else if (item.type === "text") {
-          return <TextBody text = {item.text} key={index}  />;
-        } else if (item.type === "photo") {
-          return <PostImage image={"hello"} key={index} />
-        } else if (item.type === "url") {
-          return <a key={index} href={item.url}>{item.url}</a>;
-        } else {
-          return null;
-        }
-      })}
-    </div>
-  )
+function PostBody({ content }: { content: string }) {
+  const postContent = <div dangerouslySetInnerHTML={{ __html: content }} />;
+  //   const clean = sanitize(content, {
+  //     ALLOWED_TAGS: ['p', 'img', 'h1'],
+  //     ALLOWED_ATTR: ['className', 'dir'],
+  //     SAFE_FOR_TEMPLATES: true,
+  //     USE_PROFILES: { html: true },
+  //   });
+  return <div className="ml-3 mr-3 mt-10">{postContent}</div>;
 }
 
-export default PostBody
+export default PostBody;
