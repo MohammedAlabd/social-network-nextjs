@@ -26,16 +26,7 @@ const RichTextEditor: React.FC = () => {
  onUpdate: ({ editor }) => {
   const json = editor.getJSON()
   // send the content to an API here
-},
-  
-  });
-
-  useEffect(() => {
-    if (editor) {
-    }
-  }, [editor]); 
-  
- 
+}});
 
   return (
     <div className="editor" >

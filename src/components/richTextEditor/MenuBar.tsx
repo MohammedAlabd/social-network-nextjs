@@ -1,28 +1,28 @@
 
-import React, { Fragment } from 'react'
+import React from 'react'
 import MenuItem from './MenuItem'
-
-import Bold from '../../../public/assests/icons/bold.svg'
-import Italic from '../../../public/assests/icons/italic.svg'
-import Strike from '../../../public/assests/icons/strike.svg'
-import Code from '../../../public/assests/icons/code.svg'
-import Highlight from '../../../public/assests/icons/highlight.svg'
-import Heading1 from '../../../public/assests/icons/heading1.svg'
-import Heading2 from '../../../public/assests/icons/heading2.svg'
-import Left from '../../../public/assests/icons/left.svg'
-import Center from '../../../public/assests/icons/center.svg'
-import Right from '../../../public/assests/icons/right.svg'
-import Paragraph from '../../../public/assests/icons/paragraph.svg'
-import BulletList from '../../../public/assests/icons/bulletList.svg'
-import OrderedList from '../../../public/assests/icons/orderedList.svg'
-import TaskList from '../../../public/assests/icons/taskList.svg'
-import CodeBlock from '../../../public/assests/icons/codeBlock.svg'
-import Blockquote from '../../../public/assests/icons/blockquote.svg'
-import HorizontalRule from '../../../public/assests/icons/horizontalRule.svg'
-import HardBreak from '../../../public/assests/icons/hardBreak.svg'
-import ClearFormat from '../../../public/assests/icons/clearFormat.svg'
-import Undo from '../../../public/assests/icons/undo.svg'
-import Redo from '../../../public/assests/icons/redo.svg'
+//svg files imports 
+import Bold from '../../../public/media/icons/bold.svg'
+import Italic from '../../../public/media/icons/italic.svg'
+import Strike from '../../../public/media/icons/strike.svg'
+import Code from '../../../public/media/icons/code.svg'
+import Highlight from '../../../public/media/icons/highlight.svg'
+import Heading1 from '../../../public/media/icons/heading1.svg'
+import Heading2 from '../../../public/media/icons/heading2.svg'
+import Left from '../../../public/media/icons/left.svg'
+import Center from '../../../public/media/icons/center.svg'
+import Right from '../../../public/media/icons/right.svg'
+import Paragraph from '../../../public/media/icons/paragraph.svg'
+import BulletList from '../../../public/media/icons/bulletList.svg'
+import OrderedList from '../../../public/media/icons/orderedList.svg'
+import TaskList from '../../../public/media/icons/taskList.svg'
+import CodeBlock from '../../../public/media/icons/codeBlock.svg'
+import Blockquote from '../../../public/media/icons/blockquote.svg'
+import HorizontalRule from '../../../public/media/icons/horizontalRule.svg'
+import HardBreak from '../../../public/media/icons/hardBreak.svg'
+import ClearFormat from '../../../public/media/icons/clearFormat.svg'
+import Undo from '../../../public/media/icons/undo.svg'
+import Redo from '../../../public/media/icons/redo.svg'
 
 
 type EditorProps = {
@@ -39,7 +39,6 @@ type Item  = MenuItemProps & {
   type?: string | undefined;
 };
 const MenuBar: React.FC<EditorProps> = ({ editor }) => {
-
   const items: Item[]=[
     {
       icon: Bold,
@@ -70,8 +69,7 @@ const MenuBar: React.FC<EditorProps> = ({ editor }) => {
       title: 'Highlight',
       action: () => editor.chain().focus().toggleHighlight().run(),
       isActive: () => editor.isActive('highlight'),
-    },
-   
+    }, 
     {
       icon: Heading1,
       title: 'Heading 1',
@@ -102,7 +100,6 @@ const MenuBar: React.FC<EditorProps> = ({ editor }) => {
       action: () => editor.chain().focus().setTextAlign('right').run(),
       isActive: () => editor.isActive({ textAlign: 'right' }),
     },
-    
     {
       icon: Paragraph,
       title: 'Paragraph',
@@ -133,7 +130,6 @@ const MenuBar: React.FC<EditorProps> = ({ editor }) => {
       action: () => editor.chain().focus().toggleCodeBlock().run(),
       isActive: () => editor.isActive('codeBlock'),
     },
-   
     {
       icon: Blockquote,
       title: 'Blockquote',
@@ -147,7 +143,6 @@ const MenuBar: React.FC<EditorProps> = ({ editor }) => {
      
      
     },
-   
     {
       icon: HardBreak,
       title: 'Hard Break',
@@ -161,7 +156,6 @@ const MenuBar: React.FC<EditorProps> = ({ editor }) => {
         .run(),
         
     },
-  
     {
       icon: Undo,
       title: 'Undo',
@@ -175,7 +169,7 @@ const MenuBar: React.FC<EditorProps> = ({ editor }) => {
       
     },
   ]
-  
+
   return (
     <div className="editor__header">
       {items.map((item, index) => (
