@@ -2,12 +2,12 @@
 import Image from 'next/image';
 
 export default function CreatPost() {
-  interface User {
+  interface UserList {
     id: number;
     userPhoto: string;
   }
 
-  const user: User[] = [
+  const userList: UserList[] = [
     {
       id: 1,
       userPhoto: 'https://i.pinimg.com/236x/da/c5/f8/dac5f861cf4a5d0cfbe8f310016bea28.jpg',
@@ -16,7 +16,7 @@ export default function CreatPost() {
   return (
     <>
       <div className="space-y-4">
-        {user.map((user) => (
+        {userList.map((user) => (
           <div key={user.id} className="mx-20 rounded-lg bg-white  shadow">
             <div className="flex items-center ">
               <div className="p-4">
