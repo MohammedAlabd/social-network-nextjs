@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import CreatPost from './CreatPost';
-import { FacebookIcon, LinkedInIcon, TwitterIcon, InstagramIcon } from './icos';
+import { FacebookIcon, LinkedInIcon, TwitterIcon, EmailIcon, SandwichButton } from './icons';
 import { User, users } from './usersDummyData';
 
 export default function Index() {
