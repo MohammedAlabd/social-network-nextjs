@@ -7,7 +7,12 @@ import Highlight from '@tiptap/extension-highlight';
 import TextAlign from '@tiptap/extension-text-align';
 import MenuBar from './richTextEditor/MenuBar';
 
-const RichTextEditor: React.FC = () => {
+import DOMPurify from 'dompurify';
+
+type Props = {
+  handleSubmit: (content: string) => void 
+  };
+const RichTextEditor: React.FC<Props> = ({handleSubmit}) => {
 
   const editor = useEditor({
     extensions: [
@@ -21,11 +26,13 @@ const RichTextEditor: React.FC = () => {
       TaskItem,
       Highlight,
     ],
-    content: `Start writing`,
+    content: ``,
     // triggered on every change
  onUpdate: ({ editor }) => {
-  const json = editor.getJSON()
-  // send the content to an API here
+  const htmlContent = editor.getHTML()
+  const sanitizedContent = DOMPurify.sanitize(htmlContent);
+  handleSubmit(sanitizedContent)
+  console.log(sanitizedContent)
 }});
 
   return (
