@@ -2,12 +2,12 @@
 import Image from 'next/image';
 
 export default function CreatPost() {
-  interface UserList {
+  interface User {
     id: number;
     userPhoto: string;
   }
 
-  const userList: UserList[] = [
+  const userList: User[] = [
     {
       id: 1,
       userPhoto: 'https://i.pinimg.com/236x/da/c5/f8/dac5f861cf4a5d0cfbe8f310016bea28.jpg',
