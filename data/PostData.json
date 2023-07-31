@@ -1,0 +1,50 @@
+{
+  "post": {
+    "id": 1,
+    "user": {
+      "id": 1,
+      "name": "محمود عبدالباري",
+      "username": "mahmood83367",
+      "profilePicture": "profile.jpg",
+      "membership": "very admin"
+    },
+    "content": [
+      "<div className='font-extrabold'> باخر لحظة كدرت اصور </div>",
+      "<h1 className='font-bold text-xl'> Test arabic and english </h1>",
+      "<p> معليكم بالفوك هاي هيج بس </p>",
+      "<img src='/profile.jpg' alt='img' />"
+    ],
+    "likes": [
+      {
+        "id": 1,
+        "userId": 2,
+        "username": "janedoe"
+      },
+      {
+        "id": 2,
+        "userId": 3,
+        "username": "marysmith"
+      }
+    ],
+    "comments": [
+      {
+        "id": 1,
+        "userId": 2,
+        "username": "janedoe",
+        "content": "Great post!"
+      },
+      {
+        "id": 2,
+        "userId": 3,
+        "username": "marysmith",
+        "content": "Keep it up!"
+      }
+    ],
+    "SectionInfo":{
+      "SectionName":"المدونة",
+      "SectionUrl":"localhost:3000/mawdawna/feed",
+      "SectionPhoto":"/blog.svg"
+
+    }
+  }
+}
