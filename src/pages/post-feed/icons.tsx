@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import facebook from '../../../public/feedPostIcons/facebook.svg';
-import Linkedinicon from '../../../public/feedPostIcons/LinkedInIcon.svg';
-import Twittericon from '../../../public/feedPostIcons/TwitterIcon.svg';
-import Email from '../../../public/feedPostIcons/Email.svg';
-import sandwichButton from '../../../public/feedPostIcons/SandwichButton.svg';
+import facebook from '../../../public/media/icons/facebook.svg';
+import Linkedinicon from '../../../public/media/icons/LinkedInIcon.svg';
+import Twittericon from '../../../public/media/icons/TwitterIcon.svg';
+import Email from '../../../public/media/icons/Email.svg';
+import sandwichbutton from '../../../public/media/icons/sandwichButton.svg';
 
 export function FacebookIcon() {
   return <Image src={facebook} alt="Facebook Icon" width={24} height={24} />;
