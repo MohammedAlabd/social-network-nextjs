@@ -22,40 +22,42 @@ export default function Post() {
               </div>
               <div className="navbar justify-end">
                 <div className="dropdown-end dropdown">
-                  <div tabIndex={0} className="btn m-1">
-                    <SandwichButton />
+                  <div className="btn m-1">
+                    <button tabIndex={0} type="button">
+                      <SandwichButton />
+                    </button>
                   </div>
 
-                  <ul tabIndex={0} className="dropdown-content menu rounded-box z-[1] w-52 bg-base-100 p-2 shadow">
+                  <ul className="dropdown-content menu rounded-box z-[1] w-52 bg-base-100 p-2 shadow">
                     <li>
-                      <a>save post</a>
+                      <Link href="/.">save post</Link>
                     </li>
                     <li>
-                      <a>mute post</a>
+                      <Link href="/.">mute post</Link>
                     </li>
                     <li>
                       <details>
                         <summary>share</summary>
                         <ul className="bg-base-100 p-2">
                           <li>
-                            <a>
+                            <Link href="/.">
                               <FacebookIcon />
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a>
+                            <Link href="/.">
                               <LinkedInIcon />
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a>
+                            <Link href="/.">
                               <TwitterIcon />
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a>
+                            <Link href="/.">
                               <EmailIcon />
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                       </details>
@@ -65,22 +67,22 @@ export default function Post() {
                         <summary>more</summary>
                         <ul className="bg-base-100 p-2">
                           <li>
-                            <a>Hide from active feed</a>
+                            <Link href="/.">Hide from active feed</Link>
                           </li>
                           <li>
-                            <a>Report post</a>
+                            <Link href="/.">Report post</Link>
                           </li>
                           <li>
-                            <a>Block {user.username}</a>
+                            <Link href="/.">Block {user.username}</Link>
                           </li>
                           <li>
-                            <a>Report {user.username}</a>
+                            <Link href="/.">Report {user.username}</Link>
                           </li>
                           <li>
-                            <a>Hide space</a>
+                            <Link href="/.">Hide space</Link>
                           </li>
                           <li>
-                            <a>copy post ID</a>
+                            <Link href="/.">copy post ID</Link>
                           </li>
                         </ul>
                       </details>
