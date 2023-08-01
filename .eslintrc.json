@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["next","airbnb", "prettier"],
+  "extends": ["next", "airbnb", "prettier"],
   "plugins": ["react", "prettier"],
   "parser": "@typescript-eslint/parser",
   "rules": {
@@ -13,7 +13,6 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
 
-    
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -22,7 +21,7 @@
         "jsx": "never",
         "ts": "never",
         "tsx": "never"
-  }
+      }
     ]
-}
+  }
 }
