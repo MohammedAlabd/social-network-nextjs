@@ -1,26 +1,14 @@
 import Link from 'next/link';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import Avatar from 'react-avatar';
 import Image from 'next/image';
+import { SectionData, UserData } from '@/schemas.tsx';
+import ReactAvatar from './ReactAvatar.tsx';
 
-function PublisherInfo({
-  userData,
-  section,
-}: {
-  userData: {
-    id: number;
-    name: string;
-    username: string;
-    profilePicture: string;
-    membership: string;
-  };
-  section: { SectionName: string; SectionUrl: string; SectionPhoto: string };
-}) {
+function PublisherInfo({ userData, section }: { userData: UserData; section: SectionData }) {
   return (
     <div>
       <div className="flex">
         <button type="button">
-          <Avatar title="test" src={userData.profilePicture} size="60" round />
+          <ReactAvatar title="test" src={userData.profilePicture} size="60" round />
         </button>
         <div className="ml-3 flex flex-col">
           <Link href="/post" className="text-l mb-1">
