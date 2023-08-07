@@ -1,0 +1,16 @@
+# Table of contents
+
+* [🤠 Social Network](README.md)
+  * [🚀 Getting Started](social-network/getting-started/README.md)
+    * [🚧 Engineering Team Introduction](social-network/getting-started/engineering-team-introduction.md)
+    * [🛠 Tools](social-network/getting-started/tools.md)
+    * [📄 Development Environment](social-network/getting-started/development-environment.md)
+  * [🧑🤝🧑 Team](social-network/team.md)
+  * [👩💻 Development Process](social-network/development-process/README.md)
+    * [✅ PR Checklist](social-network/development-process/pr-checklist.md)
+  * [🏗 Architecture](social-network/architecture/README.md)
+    * [🦾 Technologies](social-network/architecture/technologies.md)
+    * [® Non-functional Requirements](social-network/architecture/non-functional-requirements.md)
+  * [🎨 Design](social-network/design.md)
+  * [👀 Code Review Process](social-network/code-review-process.md)
+  * [📜 Team Guidelines](social-network/team-guidelines.md)
