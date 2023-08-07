@@ -1,6 +1,16 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import LoginBtn from './LoginBtn';
+
+interface Props {
+  authData:  {
+    user: {
+      name: string,
+    };
+  };
+  authStatus: string
+}
 
 const navigation = [
   { name: 'Search', href: '#', current: false }, 
@@ -10,7 +20,8 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+const Navbar: React.FC<Props> = ({ authData, authStatus }) =>  {
+  
   return (
     <Disclosure as="nav" className="bg-[#abd9e1]">
       {({ open }) => (
@@ -36,34 +47,15 @@ export default function Example() {
                   </div>
                 </a>
                 </div>
-                {/* <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                </div> */}
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
                   className="relative rounded-full p-1 text-gray-400 hover:text-white"
                 >
-                  {/* <span className="absolute -inset-1.5" /> */}
+                  <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000cc" className="w-6 h-6">
-                    <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
-                  </svg>
+                  <BellIcon className="block h-6 w-6 " aria-hidden="true" />
                 </button>
 
                 {/* Profile dropdown */}
@@ -72,11 +64,18 @@ export default function Example() {
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
+                      {authStatus === "authenticated" ? 
+                         <img
+                         className="h-10 w-10 rounded-full"
+                         src="https://media1-production-mightynetworks.imgix.net/asset/56159004/IMG_6521_2.heic?ixlib=rails-4.2.0&fm=jpg&q=100&auto=format&w=2004&h=2004&fit=crop&crop=faces&impolicy=Avatar&mask=ellipse" 
+                         alt=""
+                       />
+                       : 
+                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray"  className="h-10 w-10 rounded-full bg-white">
+                       <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                     </svg>
+                     
+                      }
                     </Menu.Button>
                   </div>
                   <Transition
@@ -89,6 +88,18 @@ export default function Example() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    { (authStatus === "authenticated") &&
+                     <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                           Hi {authData?.user?.name}
+                          </a>
+                        )}
+                      </Menu.Item>
+                      } 
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -111,12 +122,7 @@ export default function Example() {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Sign out
-                          </a>
+                            <LoginBtn />
                         )}
                       </Menu.Item>
                     </Menu.Items>
@@ -125,7 +131,7 @@ export default function Example() {
               </div>
             </div>
           </div>
-
+          //We will update this when update the othe sections of the navba
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1  pb-3 pt-2">
               {navigation.map((item) => (
@@ -149,3 +155,6 @@ export default function Example() {
     </Disclosure>
   )
 }
+
+
+export default Navbar;
