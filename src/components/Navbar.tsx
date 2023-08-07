@@ -131,7 +131,7 @@ const Navbar: React.FC<Props> = ({ authData, authStatus }) =>  {
               </div>
             </div>
           </div>
-          //We will update this when update the othe sections of the navba
+          {/* We will update this when update the othe sections of the navba */}
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1  pb-3 pt-2">
               {navigation.map((item) => (
