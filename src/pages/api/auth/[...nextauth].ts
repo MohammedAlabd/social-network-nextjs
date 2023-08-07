@@ -1,14 +1,12 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import CredentialsProvider from 'next-auth/providers/credentials';
-
+import CredentialsProvider from "next-auth/providers/credentials"
 
 export const authOptions = {
-  // Configure one or more authentication providers
   providers: [
     GoogleProvider({
-        clientId: process.env.GOOGLE_CLIENT_ID as string,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+        clientId: process.env.GOOGLE_ID as string,
+        clientSecret: process.env.GOOGLE_SECRET as string
       }),
       CredentialsProvider({
         name: "Credentials",
@@ -25,8 +23,7 @@ export const authOptions = {
             }
         },
         async authorize(credentials) {
-            const user = { id: "42", name: "Dave", password: "nextauth" }
-
+            const user = { id: "1", name: "Mays", password: "11" }
             if (credentials?.username === user.name && credentials?.password === user.password) {
                 return user
             } else {
@@ -35,6 +32,7 @@ export const authOptions = {
         }
     })
 ],
+
 }
 
 export default NextAuth(authOptions)
