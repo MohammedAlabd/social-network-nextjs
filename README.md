@@ -95,7 +95,7 @@ Add more language directories as needed.
   
   - When you add new file you should import it in the place you are using in the getStaticProps and in the useTranslation ( it should be written as an array [] )
 
-  const { t} = useTranslation(['common','header','footer'])
+  const { t } = useTranslation(['common','header','footer'])
   export const getStaticProps: GetStaticProps = async ({
   locale,
 }) => ({
