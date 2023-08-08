@@ -1,12 +1,10 @@
-import Head from 'next/head';
+import Comments from '../components/Comments.tsx';
 
 export default function Home() {
-
   return (
     <main>
-    <Head>
       <h1 className="test-hello">hello Team</h1>
-    </Head>
-  </main>
-  )
+      <Comments currentUserId="1" />
+    </main>
+  );
 }
