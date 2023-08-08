@@ -4,14 +4,17 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import LoginBtn from './LoginBtn';
 
 interface Props {
-  authData:  {
-    user: {
-      name: string,
-    };
-  };
-  authStatus: string
+  authData: {
+    user?:  {
+      name?: string | null | undefined; 
+      email?: string | null | undefined; 
+      image?: string | null | undefined;
+   };
+  } | null ;
+  authStatus: "authenticated" | "loading" | "unauthenticated"
 }
 
+//Will be updated when we wight moe content if not we will delete it
 const navigation = [
   { name: 'Search', href: '#', current: false }, 
 ]
@@ -21,7 +24,7 @@ function classNames(...classes: string[]) {
 }
 
 const Navbar: React.FC<Props> = ({ authData, authStatus }) =>  {
-  
+ 
   return (
     <Disclosure as="nav" className="bg-[#abd9e1]">
       {({ open }) => (
@@ -131,7 +134,7 @@ const Navbar: React.FC<Props> = ({ authData, authStatus }) =>  {
               </div>
             </div>
           </div>
-          {/* We will update this when update the othe sections of the navba */}
+          {/* We will update this when update the othe sections of the navba if not will be deleted */}
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1  pb-3 pt-2">
               {navigation.map((item) => (
