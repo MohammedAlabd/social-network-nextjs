@@ -7,7 +7,12 @@ export interface User {
   photo: string;
 }
 
-export const users: User[] = [
+export interface UserType {
+  id: number;
+  userPhoto: string;
+}
+
+export const posts: User[] = [
   {
     id: 1,
     username: 'Aya Ali',
