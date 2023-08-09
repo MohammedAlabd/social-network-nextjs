@@ -21,9 +21,5 @@ export function EmailIcon() {
   return <Image src={Email} alt="Facebook Icon" width={24} height={24} />;
 }
 export function SandwichButton() {
-  return (
-    <div tabIndex={0} className="btn m-1">
-      <Image src={sandwichButton} alt="Facebook Icon" width={24} height={24} />
-    </div>
-  );
+  return <Image src={sandwichbutton} alt="Facebook Icon" width={24} height={24} />;
 }
