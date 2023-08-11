@@ -1,33 +1,12 @@
 import LoginBtn from './LoginBtn';
 import { useTranslation } from 'next-i18next';
-import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import type { InferGetStaticPropsType } from 'next';
 import { getStaticProps } from '@/pages';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useSession } from 'next-auth/react';
 
-interface _Props {
-  authData: {
-    user?: {
-      name?: string | null | undefined;
-      email?: string | null | undefined;
-      image?: string | null | undefined;
-    };
-  } | null;
-  authStatus: 'authenticated' | 'loading' | 'unauthenticated';
-}
-
-const Navbar = function (
-  _Props: InferGetStaticPropsType<typeof getStaticProps>,
-  //lines below will be needed fo authentication
-  // authData: {
-  //   user?: {
-  //     name?: string | null | undefined;
-  //     email?: string | null | undefined;
-  //     image?: string | null | undefined;
-  //   };
-  // } | null,
-  // authStatus?: 'authenticated' | 'loading' | 'unauthenticated' | 'undefined'
-) {
+const Navbar = function (_Props: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation('navbar');
+  const { status, data } = useSession();
 
   return (
     <div className="navbar bg-[#abd9e1] px-2 shadow-xl">
@@ -55,8 +34,8 @@ const Navbar = function (
           </label>
           <div tabIndex={0} className="card dropdown-content card-compact z-[1] mt-3 w-52 bg-base-100 shadow">
             <div className="card-body">
-              <span className="text-m border-b p-2 font-normal">User {t('liked your post')}</span>
-              <button className="text-info">{t('See more')}</button> 
+              <span className="text-m border-b p-2 font-normal">{data?.user?.name} {t('liked your post')}</span>
+              <button className="text-info">{t('See more')}</button>
             </div>
           </div>
         </div>
@@ -68,7 +47,7 @@ const Navbar = function (
           </label>
           <ul tabIndex={0} className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 bg-base-100 p-2 shadow">
             <li>
-              <a className="justify-between">{t('Hello, ')} </a>
+              <a className="justify-between">{t('Hello, ')} {data?.user?.name} </a>
             </li>
             <li>
               <a className="justify-between">{t('Profile')}</a>
