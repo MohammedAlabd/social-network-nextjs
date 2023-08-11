@@ -4,16 +4,17 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getStaticProps } from '@/pages';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-interface _Props {
-  authData: {
-    user?: {
-      name?: string | null | undefined;
-      email?: string | null | undefined;
-      image?: string | null | undefined;
-    };
-  } | null;
-  authStatus: 'authenticated' | 'loading' | 'unauthenticated';
-}
+ //lines below will be needed fo authentication
+// interface _Props {
+//   authData: {
+//     user?: {
+//       name?: string | null | undefined;
+//       email?: string | null | undefined;
+//       image?: string | null | undefined;
+//     };
+//   } | null;
+//   authStatus: 'authenticated' | 'loading' | 'unauthenticated';
+// }
 
 const Navbar = function (
   _Props: InferGetStaticPropsType<typeof getStaticProps>,
