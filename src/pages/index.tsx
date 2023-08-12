@@ -1,10 +1,9 @@
 import LoginBtn from '@/components/login-btn';
 import Head from 'next/head';
 
-export default function Home() {
-
+  const { t} = useTranslation('common')
+  
   return (
-
     <main>
     <Head>
       <h1 className="test-hello">hello Team</h1>
@@ -14,3 +13,15 @@ export default function Home() {
   )
 
 }
+
+export const getStaticProps: GetStaticProps = async ({
+  locale,
+}) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? 'en', [
+      'common'
+    ])),
+  },
+})
+
+export default Home
