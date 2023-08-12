@@ -2,7 +2,7 @@ import React from 'react';
 import { formatDistance, subDays } from 'date-fns';
 import CommentForm from './CommentForm.tsx';
 
-type CommentTypes = {
+type CommentType = {
   id: string;
   username: string;
   image: string;
@@ -12,11 +12,11 @@ type CommentTypes = {
 };
 type ActiveComment = {
   id: string;
-  type: string; // You can specify more specific types for 'type' if needed
+  type: string;
 };
 type CommentProps = {
-  comment: CommentTypes;
-  replies: Array<CommentTypes>;
+  comment: CommentType;
+  replies: Array<CommentType>;
   setActiveComment: (comment: ActiveComment | null) => void;
   activeComment: ActiveComment | null;
   updateComment: (text: string, id: string) => void;
