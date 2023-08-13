@@ -16,7 +16,6 @@
     "eslint-config-next": "13.4.7",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "i": "^0.3.7",
     "i18next": "^23.2.11",
     "next": "13.4.7",
     "next-auth": "^4.23.0",
