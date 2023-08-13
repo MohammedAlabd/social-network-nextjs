@@ -23,6 +23,7 @@ export const authOptions = {
             }
         },
         async authorize(credentials) {
+            //The use will be delted once we have a BE
             const user = { id: "1", name: "Mays", password: "11" }
             if (credentials?.username === user.name && credentials?.password === user.password) {
                 return user
