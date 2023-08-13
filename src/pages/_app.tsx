@@ -8,4 +8,5 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
     <Component {...pageProps} />
   </SessionProvider>
 );
+
 export default appWithTranslation(MyApp);
