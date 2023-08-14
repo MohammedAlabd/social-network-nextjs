@@ -3,7 +3,6 @@ import { useTranslation } from 'next-i18next';
 import type { InferGetStaticPropsType } from 'next';
 import { getStaticProps } from '@/pages';
 import Image from 'next/image';
-import Bell from '../../public/media/icons/Bell.svg';
 
 const Navbar = function (_Props: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation('common');
