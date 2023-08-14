@@ -1,4 +1,15 @@
- {
+{
+  "test": {
     "hello Team": "هلو فريق",
     "hellopeople": "هلو عالم"
+  },
+  "navbar": {
+    "Hello, ": "مرحبا",
+    "Profile": "الملف الشخصي",
+    "Settings": "الاعدادات",
+    "See more": "شاهدالمزيد",
+    "Sign in": "الدخول",
+    "Sign out": "الخروج",
+    "liked your post": "فام بالاعجال بالمنشور الخاص بك"
+  }
 }

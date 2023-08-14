@@ -1,4 +1,15 @@
 {
-        "hello Team": "hello Team",
-        "hellopeople": "hello world"
+  "test": {
+    "hello Team": "hello Team",
+    "hellopeople": "hello world"
+  },
+  "navbar": {
+    "Hello, ": "Hello, ",
+    "Profile": "Profile",
+    "Settings": "Settings",
+    "See more": "See more",
+    "Sign in": "Sign in",
+    "Sign out": "Sign out",
+    "liked your post": "liked your post"
+  }
 }
