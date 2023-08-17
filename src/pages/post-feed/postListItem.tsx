@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
 import { FacebookIcon, LinkedInIcon, TwitterIcon, EmailIcon, SandwichButton } from './icons';
 import { User } from './usersDummyData';
 
@@ -7,6 +8,7 @@ type Props = {
   user: User;
 };
 export default function PostListItem({ user }: Props) {
+  const { t } = useTranslation('common');
   return (
     <div>
       <div key={user.id} className="mx-20 rounded-lg bg-white p-4 shadow">
@@ -31,14 +33,14 @@ export default function PostListItem({ user }: Props) {
               </div>
               <ul className="dropdown-content menu rounded-box z-[1] w-52 bg-base-100 p-2 shadow">
                 <li>
-                  <Link href="/.">save post</Link>
+                  <Link href="/.">{t('save post')}</Link>
                 </li>
                 <li>
-                  <Link href="/.">mute post</Link>
+                  <Link href="/.">{t('mute post')}</Link>
                 </li>
                 <li>
                   <details>
-                    <summary>share</summary>
+                    <summary>{t('share')}</summary>
                     <ul className="bg-base-100 p-2">
                       <li>
                         <Link href="/.">
@@ -65,25 +67,29 @@ export default function PostListItem({ user }: Props) {
                 </li>
                 <li>
                   <details>
-                    <summary>more</summary>
+                    <summary>{t('more')}</summary>
                     <ul className="bg-base-100 p-2">
                       <li>
-                        <Link href="/.">Hide from active feed</Link>
+                        <Link href="/.">{t('Hide from active feed')}</Link>
                       </li>
                       <li>
-                        <Link href="/.">Report post</Link>
+                        <Link href="/.">{t('Report post')}</Link>
                       </li>
                       <li>
-                        <Link href="/.">Block {user.username}</Link>
+                        <Link href="/.">
+                          {t('Block')} {user.username}
+                        </Link>
                       </li>
                       <li>
-                        <Link href="/.">Report {user.username}</Link>
+                        <Link href="/.">
+                          {t('Report')} {user.username}
+                        </Link>
                       </li>
                       <li>
-                        <Link href="/.">Hide space</Link>
+                        <Link href="/.">{t('Hide space')}</Link>
                       </li>
                       <li>
-                        <Link href="/.">copy post ID</Link>
+                        <Link href="/.">{t('copy post ID')}</Link>
                       </li>
                     </ul>
                   </details>

@@ -1,6 +1,7 @@
 /* eslint-disable no-shadow */
 import Image from 'next/image';
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 import { UserType } from './usersDummyData';
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
 };
 
 export default function CreatPost({ user }: Props) {
+  const { t } = useTranslation('common');
   return (
     <>
       <div className="space-y-4">
@@ -24,8 +26,8 @@ export default function CreatPost({ user }: Props) {
             </div>
             <div className="px-24 text-center">
               <div className=" flex flex-col px-24 align-top ">
-                <p className="">Lets GET STARTED WITH A QUESTION</p>
-                <h3 className="px-24">What Would you Like to find in this community?</h3>
+                <p className="">{t('Lets GET STARTED WITH A QUESTION')}</p>
+                <h3 className="px-24">{t('What Would you Like to find in this community?')}</h3>
               </div>
             </div>
             <div>
@@ -36,7 +38,7 @@ export default function CreatPost({ user }: Props) {
               </div>
               <div className="py-20">
                 <button type="button" className="btn-warning btn">
-                  Button
+                  {t('Post')}
                 </button>
               </div>
             </div>

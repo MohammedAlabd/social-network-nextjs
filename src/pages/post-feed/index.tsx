@@ -1,7 +1,14 @@
-import Image from 'next/image';
+import type { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CreatPost from './CreatPost';
 import Post from './Posts';
 import { UserType } from './usersDummyData';
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+  },
+});
 
 export default function Index() {
   const user: UserType = {
