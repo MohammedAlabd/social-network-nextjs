@@ -1,4 +1,17 @@
- {
-    "hello Team": "هلو فريق",
-    "hellopeople": "هلو عالم"
+{
+  "hello Team": "هلو فريق",
+  "hellopeople": "هلو عالم",
+  "save post": "حفظ المنشور",
+  "mute post": "كتم المنشور",
+  "share": "يشارك",
+  "more": "أكثر",
+  "Hide from active feed": "إخفاء من نشط",
+  "Report post": "الإبلاغ عن المنشور",
+  "Block": "حظر",
+  "Report": "الإبلاغ",
+  "Hide space": "إخفاءالمنشور",
+  "copy post ID": "انسخ معرف  المنشور",
+  "Lets GET STARTED WITH A QUESTION": "لنبدأ بسؤال",
+  "What Would you Like to find in this community?": "ماذا تريد أن تجد في هذا المجتمع؟",
+  "post": "نشر"
 }
