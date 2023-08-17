@@ -1,4 +1,11 @@
- {
-    "hello Team": "هلو فريق",
-    "hellopeople": "هلو عالم"
+{
+  "hello Team": "هلو فريق",
+  "hellopeople": "هلو عالم",
+  "Hello, ": "مرحبا",
+  "Profile": "الملف الشخصي",
+  "Settings": "الاعدادات",
+  "See more": "شاهدالمزيد",
+  "Sign in": "الدخول",
+  "Sign out": "الخروج",
+  "liked your post": "فام بالاعجال بالمنشور الخاص بك"
 }
