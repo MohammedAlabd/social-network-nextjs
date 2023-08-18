@@ -16,7 +16,6 @@ const CommentForm: React.FC<CommentFormProps> = function ({
   initialText = '',
 }) {
   const [text, setText] = useState(initialText);
-  const isTextareaDisabled = text.length === 0;
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,7 +35,7 @@ const CommentForm: React.FC<CommentFormProps> = function ({
         value={text}
         onChange={onChange}
       />
-      <button type="submit" className="btn-xs mr-2 bg-yellow-500 hover:bg-yellow-600" disabled={isTextareaDisabled}>
+      <button type="submit" className="btn-xs mr-2 bg-yellow-500 hover:bg-yellow-600" disabled={text.length === 0}>
         {submitLabel}
       </button>
 

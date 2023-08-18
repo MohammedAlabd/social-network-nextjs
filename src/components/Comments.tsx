@@ -17,17 +17,12 @@ interface CommentDataTypes {
   parentId: string | null;
   createdAt: string;
 }
-type ActiveComment = {
-  id: string;
-  type: string;
-};
 interface CommentsProps {
   currentUserId: string;
 }
 
 const Comments: React.FC<CommentsProps> = function ({ currentUserId }) {
   const [backendComments, setBackendComments] = useState<CommentDataTypes[]>([]);
-  const [activeComment, setActiveComment] = useState<ActiveComment | null>(null);
   const rootComments = backendComments.filter((backendComment) => backendComment.parentId === null);
 
   const getReplies = (commentId: string) =>
@@ -38,7 +33,6 @@ const Comments: React.FC<CommentsProps> = function ({ currentUserId }) {
   const addComment = (text: string, parentId?: string | null) => {
     createCommentApi(text, parentId).then((comment) => {
       setBackendComments([comment, ...backendComments]);
-      setActiveComment(null);
     });
   };
 
@@ -51,7 +45,6 @@ const Comments: React.FC<CommentsProps> = function ({ currentUserId }) {
         return backendComment;
       });
       setBackendComments(updatedBackendComments);
-      setActiveComment(null);
     });
   };
 
@@ -81,11 +74,9 @@ const Comments: React.FC<CommentsProps> = function ({ currentUserId }) {
             key={rootComment.id}
             comment={rootComment}
             replies={getReplies(rootComment.id)}
-            activeComment={activeComment}
-            setActiveComment={setActiveComment}
-            addComment={addComment}
-            deleteComment={deleteComment}
-            updateComment={updateComment}
+            onAddComment={addComment}
+            onDeleteComment={deleteComment}
+            onUpdateComment={updateComment}
             currentUserId={currentUserId}
           />
         ))}

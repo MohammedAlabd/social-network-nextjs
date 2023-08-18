@@ -10,18 +10,12 @@ type CommentType = {
   userId: string;
   createdAt: string;
 };
-type ActiveComment = {
-  id: string;
-  type: string;
-};
 type CommentProps = {
   comment: CommentType;
   replies: Array<CommentType>;
-  setActiveComment: (comment: ActiveComment | null) => void;
-  activeComment: ActiveComment | null;
-  updateComment: (text: string, id: string) => void;
-  deleteComment: (id: string) => void;
-  addComment: (text: string, replyId: string) => void;
+  onUpdateComment: (text: string, id: string) => void;
+  onDeleteComment: (id: string) => void;
+  onAddComment: (text: string, replyId: string) => void;
   parentId?: string | null;
   currentUserId: string;
 };
@@ -29,16 +23,30 @@ type CommentProps = {
 const Comment: React.FC<CommentProps> = function ({
   comment,
   replies,
-  setActiveComment,
-  activeComment,
-  updateComment,
-  deleteComment,
-  addComment,
+  onUpdateComment,
+  onDeleteComment,
+  onAddComment,
   parentId = null,
   currentUserId,
 }) {
-  const isEditing = activeComment && activeComment.id === comment.id && activeComment.type === 'editing';
-  const isReplying = activeComment && activeComment.id === comment.id && activeComment.type === 'replying';
+  const [isEditing, setIsEditing] = React.useState(false);
+  const [isReplying, setIsReplying] = React.useState(false);
+
+  const startEditing = () => {
+    setIsEditing(true);
+    setIsReplying(false);
+  };
+
+  const startReplying = () => {
+    setIsEditing(false);
+    setIsReplying(true);
+  };
+
+  const finishEditingAndReplying = () => {
+    setIsEditing(false);
+    setIsReplying(false);
+  };
+
   const fiveMinutes = 300000;
   const timePassed = new Date().getTime() - new Date(comment.createdAt).getTime() > fiveMinutes;
   const canDelete = currentUserId === comment.userId && replies.length === 0 && !timePassed;
@@ -62,40 +70,35 @@ const Comment: React.FC<CommentProps> = function ({
             {createdAt}
           </div>
         </div>
-        {!isEditing && <div className="m-3 text-sm text-gray-600">{comment.body}</div>}
-        {isEditing && (
+        {isEditing ? (
           <CommentForm
             submitLabel="Update"
             hasCancelButton
             initialText={comment.body}
-            handleSubmit={(text) => updateComment(text, comment.id)}
+            handleSubmit={(text) => {
+              onUpdateComment(text, comment.id);
+              finishEditingAndReplying();
+            }}
             handleCancel={() => {
-              setActiveComment(null);
+              finishEditingAndReplying();
             }}
           />
+        ) : (
+          <div className="m-3 text-sm text-gray-600">{comment.body}</div>
         )}
         <div className="comment-actions">
           {canReply && (
-            <div
-              className="tooltip mr-3"
-              data-tip="join the"
-              onClick={() => setActiveComment({ id: comment.id, type: 'replying' })}
-              aria-hidden="true"
-            >
+            <div className="tooltip mr-3" data-tip="join the" onClick={startReplying} aria-hidden="true">
               Reply
             </div>
           )}
           {canEdit && (
-            <div
-              className="mr-8"
-              onClick={() => setActiveComment({ id: comment.id, type: 'editing' })}
-              aria-hidden="true"
-            >
+            <div className="mr-8" onClick={startEditing} aria-hidden="true">
               Edit
             </div>
           )}
           {canDelete && (
-            <div className="mr-8" onClick={() => deleteComment(comment.id)} aria-hidden="true">
+            <div className="mr-8" onClick={() => onDeleteComment(comment.id)} aria-hidden="true">
               Delete
             </div>
           )}
@@ -103,10 +106,13 @@ const Comment: React.FC<CommentProps> = function ({
         {isReplying && (
           <CommentForm
             submitLabel="comment"
-            handleSubmit={(text) => addComment(text, replyId)}
+            handleSubmit={(text) => {
+              onAddComment(text, replyId);
+              finishEditingAndReplying();
+            }}
             hasCancelButton
             handleCancel={() => {
-              setActiveComment(null);
+              finishEditingAndReplying();
             }}
           />
         )}
@@ -116,11 +122,9 @@ const Comment: React.FC<CommentProps> = function ({
               <Comment
                 comment={reply}
                 key={reply.id}
-                setActiveComment={setActiveComment}
-                activeComment={activeComment}
-                updateComment={updateComment}
-                deleteComment={deleteComment}
-                addComment={addComment}
+                onUpdateComment={onUpdateComment}
+                onDeleteComment={onDeleteComment}
+                onAddComment={onAddComment}
                 parentId={comment.id}
                 replies={[]}
                 currentUserId={currentUserId}
