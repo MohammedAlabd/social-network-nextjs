@@ -33,10 +33,10 @@ export default function PostListItem({ post }: Props) {
               </div>
               <ul className="dropdown-content menu rounded-box z-[1] w-52 bg-base-100 p-2 shadow">
                 <li>
-                  <Link href="/.">{t('save post')}</Link>
+                  <button type="button">{t('save post')}</button>
                 </li>
                 <li>
-                  <Link href="/.">{t('mute post')}</Link>
+                  <button type="button">{t('mute post')}</button>
                 </li>
                 <li>
                   <details>
@@ -70,26 +70,26 @@ export default function PostListItem({ post }: Props) {
                     <summary>{t('more')}</summary>
                     <ul className="bg-base-100 p-2">
                       <li>
-                        <Link href="/.">{t('Hide from active feed')}</Link>
+                        <button type="button">{t('Hide from active feed')}</button>
                       </li>
                       <li>
-                        <Link href="/.">{t('Report post')}</Link>
+                        <button type="button">{t('Report post')}</button>
                       </li>
                       <li>
-                        <Link href="/.">
+                        <button type="button">
                           {t('Block')} {post.username}
-                        </Link>
+                        </button>
                       </li>
                       <li>
-                        <Link href="/.">
+                        <button type="button">
                           {t('Report')} {post.username}
-                        </Link>
+                        </button>
                       </li>
                       <li>
-                        <Link href="/.">{t('Hide space')}</Link>
+                        <button type="button">{t('Hide space')}</button>
                       </li>
                       <li>
-                        <Link href="/.">{t('copy post ID')}</Link>
+                        <button type="button">{t('copy post ID')}</button>
                       </li>
                     </ul>
                   </details>
