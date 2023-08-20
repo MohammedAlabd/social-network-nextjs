@@ -1,7 +1,7 @@
 import type { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CreatPost from './CreatPost';
-import Post from './Posts';
+import Posts from './Posts';
 import { UserType } from './usersDummyData';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
@@ -18,7 +18,7 @@ export default function Index() {
   return (
     <div>
       <CreatPost user={user} />
-      <Post />
+      <Posts />
     </div>
   );
 }

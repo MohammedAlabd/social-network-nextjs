@@ -2,27 +2,27 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { FacebookIcon, LinkedInIcon, TwitterIcon, EmailIcon, SandwichButton } from './icons';
-import { User } from './usersDummyData';
+import { Post } from './usersDummyData';
 
 type Props = {
-  user: User;
+  post: Post;
 };
-export default function PostListItem({ user }: Props) {
+export default function PostListItem({ post }: Props) {
   const { t } = useTranslation('common');
   return (
     <div>
-      <div key={user.id} className="mx-20 rounded-lg bg-white p-4 shadow">
+      <div key={post.id} className="mx-20 rounded-lg bg-white p-4 shadow">
         <div className="flex items-center">
           <Image
-            src={user.userPhoto}
+            src={post.userPhoto}
             alt="Landscape picture"
             width={800}
             height={500}
             className="mask mask-squircle w-14"
           />
           <div className="flex flex-col">
-            <span className="ml-2">{user.username}</span>
-            <span className="ml-2 text-sm text-red-500">{user.userRank}</span>
+            <span className="ml-2">{post.username}</span>
+            <span className="ml-2 text-sm text-red-500">{post.userRank}</span>
           </div>
           <div className="navbar justify-end">
             <div className="dropdown-end dropdown">
@@ -77,12 +77,12 @@ export default function PostListItem({ user }: Props) {
                       </li>
                       <li>
                         <Link href="/.">
-                          {t('Block')} {user.username}
+                          {t('Block')} {post.username}
                         </Link>
                       </li>
                       <li>
                         <Link href="/.">
-                          {t('Report')} {user.username}
+                          {t('Report')} {post.username}
                         </Link>
                       </li>
                       <li>
@@ -98,9 +98,9 @@ export default function PostListItem({ user }: Props) {
             </div>
           </div>
         </div>
-        <div className="mt-2">{user.text}</div>
+        <div className="mt-2">{post.postText}</div>
         <Image
-          src={user.photo}
+          src={post.postPhoto}
           alt="Landscape picture"
           width={800}
           height={500}
