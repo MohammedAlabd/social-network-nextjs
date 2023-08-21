@@ -1,7 +1,7 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 
 type CommentFormProps = {
-  handleSubmit: (text: string, parentId?: string | null) => void;
+  onSubmit: (_text: string) => void;
   submitLabel: string;
   hasCancelButton?: boolean;
   handleCancel?: () => void;
@@ -9,7 +9,7 @@ type CommentFormProps = {
 };
 
 const CommentForm: React.FC<CommentFormProps> = function ({
-  handleSubmit,
+  onSubmit,
   submitLabel,
   hasCancelButton = false,
   handleCancel,
@@ -17,18 +17,18 @@ const CommentForm: React.FC<CommentFormProps> = function ({
 }) {
   const [text, setText] = useState(initialText);
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    handleSubmit(text);
-    setText('');
-  };
-
   const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit(text);
+        setText('');
+      }}
+    >
       <textarea
         className="textarea-bordered  textarea-sm mb-2 w-full  focus:outline-none"
         placeholder="Share your thoughts"

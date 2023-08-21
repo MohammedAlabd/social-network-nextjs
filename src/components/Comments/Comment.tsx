@@ -1,34 +1,17 @@
 import React from 'react';
 import { formatDistance, subDays } from 'date-fns';
 import CommentForm from './CommentForm.tsx';
+import { CommentType } from './Comment.types.ts';
+import Reply from './Reply.tsx';
 
-type CommentType = {
-  id: string;
-  username: string;
-  image: string;
-  body: string;
-  userId: string;
-  createdAt: string;
-};
 type CommentProps = {
   comment: CommentType;
-  replies: Array<CommentType>;
-  onUpdateComment: (text: string, id: string) => void;
-  onDeleteComment: (id: string) => void;
-  onAddComment: (text: string, replyId: string) => void;
-  parentId?: string | null;
-  currentUserId: string;
+  onUpdateComment: (_text: string) => void;
+  onDeleteComment: () => void;
+  onReply: (_text: string) => void;
 };
 
-const Comment: React.FC<CommentProps> = function ({
-  comment,
-  replies,
-  onUpdateComment,
-  onDeleteComment,
-  onAddComment,
-  parentId = null,
-  currentUserId,
-}) {
+const Comment: React.FC<CommentProps> = function ({ comment, onUpdateComment, onDeleteComment, onReply }) {
   const [isEditing, setIsEditing] = React.useState(false);
   const [isReplying, setIsReplying] = React.useState(false);
 
@@ -48,24 +31,26 @@ const Comment: React.FC<CommentProps> = function ({
   };
 
   const fiveMinutes = 300000;
-  const timePassed = new Date().getTime() - new Date(comment.createdAt).getTime() > fiveMinutes;
-  const canDelete = currentUserId === comment.userId && replies.length === 0 && !timePassed;
-  const canReply = Boolean(currentUserId);
-  const canEdit = currentUserId === comment.userId && !timePassed;
-  const replyId = parentId || comment.id;
+
+  // TODO: fix canDelete by applying some logic
+  // const timePassed = new Date().getTime() - new Date(comment.createdAt).getTime() > fiveMinutes;
+  const canDelete = true; // currentUserId === comment.userId && replies.length === 0 && !timePassed;
+  // TODO: fix canEdit by applying some logic
+  const canEdit = true; // currentUserId === comment.userId && !timePassed;
+
   const createdAtForOnHover = new Date(comment.createdAt).toLocaleDateString();
   const createdAt = formatDistance(subDays(new Date(comment.createdAt), 3), new Date(), { addSuffix: true });
 
   return (
-    <div key={comment.id} className="flex rounded-lg p-3 hover:bg-gray-200">
+    <div className="flex rounded-lg p-3 hover:bg-gray-200">
       <div className="avatar">
         <div className="m-2 h-12 w-12 rounded-full ">
-          <img src={comment.image} alt="User Avatar" />
+          <img src={comment.creator.image} alt="User Avatar" />
         </div>
       </div>
       <div className="w-100%">
         <div className="flex">
-          <div className="mr-2 text-lg text-gray-700">{comment.username}</div>
+          <div className="mr-2 text-lg text-gray-700">{comment.creator.username}</div>
           <div className="tooltip pt-2 text-xs text-gray-400" data-tip={createdAtForOnHover}>
             {createdAt}
           </div>
@@ -75,8 +60,8 @@ const Comment: React.FC<CommentProps> = function ({
             submitLabel="Update"
             hasCancelButton
             initialText={comment.body}
-            handleSubmit={(text) => {
-              onUpdateComment(text, comment.id);
+            onSubmit={(text) => {
+              onUpdateComment(text);
               finishEditingAndReplying();
             }}
             handleCancel={() => {
@@ -87,18 +72,16 @@ const Comment: React.FC<CommentProps> = function ({
           <div className="m-3 text-sm text-gray-600">{comment.body}</div>
         )}
         <div className="comment-actions">
-          {canReply && (
-            <div className="tooltip mr-3" data-tip="join the" onClick={startReplying} aria-hidden="true">
-              Reply
-            </div>
-          )}
+          <div className="tooltip mr-3" data-tip="join the" onClick={startReplying} aria-hidden="true">
+            Reply
+          </div>
           {canEdit && (
             <div className="mr-8" onClick={startEditing} aria-hidden="true">
               Edit
             </div>
           )}
           {canDelete && (
-            <div className="mr-8" onClick={() => onDeleteComment(comment.id)} aria-hidden="true">
+            <div className="mr-8" onClick={() => onDeleteComment()} aria-hidden="true">
               Delete
             </div>
           )}
@@ -106,8 +89,8 @@ const Comment: React.FC<CommentProps> = function ({
         {isReplying && (
           <CommentForm
             submitLabel="comment"
-            handleSubmit={(text) => {
-              onAddComment(text, replyId);
+            onSubmit={(text) => {
+              onReply(text);
               finishEditingAndReplying();
             }}
             hasCancelButton
@@ -116,19 +99,10 @@ const Comment: React.FC<CommentProps> = function ({
             }}
           />
         )}
-        {replies.length > 0 && (
+        {comment.replies.length > 0 && (
           <div className="replies">
-            {replies.map((reply) => (
-              <Comment
-                comment={reply}
-                key={reply.id}
-                onUpdateComment={onUpdateComment}
-                onDeleteComment={onDeleteComment}
-                onAddComment={onAddComment}
-                parentId={comment.id}
-                replies={[]}
-                currentUserId={currentUserId}
-              />
+            {comment.replies.map((reply) => (
+              <Reply key={reply.id} reply={reply} onUpdate={() => {}} onDelete={() => {}} />
             ))}
           </div>
         )}
@@ -136,7 +110,5 @@ const Comment: React.FC<CommentProps> = function ({
     </div>
   );
 };
-Comment.defaultProps = {
-  parentId: null,
-};
+
 export default Comment;
