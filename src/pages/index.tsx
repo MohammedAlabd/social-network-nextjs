@@ -1,15 +1,9 @@
 import { useState } from 'react';
 
 // eslint-disable-next-line import/extensions
+import MinimalTextEditor from '@/components/minimalTextEditor/MinimalTextEditor';
 import RichTextEditor from '../components/RichTextEditor';
 
 export default function Home() {
-  const [editorContent, setEditorContent] = useState('');
-
-  const handleSubmit = (htmlContent: string) => {
-    setEditorContent(htmlContent);
-    // console.log('Content submitted:', htmlContent);
-  };
-
-  return <RichTextEditor handleSubmit={handleSubmit} />;
+  return <MinimalTextEditor onSubmit={(content) => console.log(content)} />;
 }
