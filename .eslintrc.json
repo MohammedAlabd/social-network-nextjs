@@ -11,6 +11,9 @@
     "react/jsx-filename-extension": [2, { "extensions": [".tsx"] }],
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
+    "no-shadow": ["warn", { "builtinGlobals": false, "hoist": "functions", "allow": [], "ignoreOnInitialization": false }],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "react/react-in-jsx-scope": "off"
+
   }
 }

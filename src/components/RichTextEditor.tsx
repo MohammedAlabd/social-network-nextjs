@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { EditorContent, useEditor } from '@tiptap/react';
 import DOMPurify from 'dompurify';
-
+import { Image } from '@tiptap/extension-image';
 import StarterKit from '@tiptap/starter-kit';
 import TaskItem from '@tiptap/extension-task-item';
 import TaskList from '@tiptap/extension-task-list';
 import Highlight from '@tiptap/extension-highlight';
 import TextAlign from '@tiptap/extension-text-align';
-
-// eslint-disable-next-line import/extensions
-import MenuBar from './richTextEditor/MenuBar';
+import Placeholder from '@tiptap/extension-placeholder';
+import MenuBar from './richTextEditor/MenuBar.tsx';
 
 type Props = {
-  handleSubmit: (content: string) => void;
+  onSubmit: (_content: string) => void;
+  placeholder?: string;
 };
 
-const RichTextEditor: React.FC<Props> = function ({ handleSubmit }) {
+const RichTextEditor: React.FC<Props> = function ({ onSubmit, placeholder = 'Type anything', initialContent = '' }) {
+  const [content, setContent] = useState('');
   const editor = useEditor({
     extensions: [
       StarterKit.configure({}),
@@ -25,23 +26,23 @@ const RichTextEditor: React.FC<Props> = function ({ handleSubmit }) {
       TaskList,
       TaskItem,
       Highlight,
+      Placeholder.configure({
+        placeholder,
+      }),
+      Image,
     ],
-    content: ``,
-    // triggered on every change
-    // eslint-disable-next-line no-shadow
-    onUpdate: ({ editor }) => {
-      const htmlContent = editor.getHTML();
-      const sanitizedContent = DOMPurify.sanitize(htmlContent);
-      handleSubmit(sanitizedContent);
-    },
+    onUpdate: ({ editor }) => setContent(DOMPurify.sanitize(editor.getHTML())),
   });
-
   return (
-    <div className="editor">
-      {editor && <MenuBar editor={editor} />}
-      {editor && <EditorContent className="editor__content" editor={editor} />}
+    <div>
+      <div className="editor m-2">
+        {editor && <MenuBar editor={editor} />}
+        {editor && <EditorContent className="editor__content" data-testid="editor-content" editor={editor} />}
+      </div>
+      <button type="button" onClick={() => onSubmit(content)} className=" btn ml-2 w-1/6">
+        Submit
+      </button>
     </div>
   );
 };
-
 export default RichTextEditor;

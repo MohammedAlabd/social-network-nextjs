@@ -1,6 +1,5 @@
-/* eslint-disable import/extensions */
 import React from 'react';
-import MenuItem from './MenuItem';
+import MenuItem from './MenuItem.tsx';
 // svg files imports
 import Bold from '../../../public/media/icons/bold.svg';
 import Italic from '../../../public/media/icons/italic.svg';
@@ -37,8 +36,8 @@ type MenuItemProps = {
 type Item = MenuItemProps & {
   type?: string | undefined;
 };
-// eslint-disable-next-line react/function-component-definition
-const MenuBar: React.FC<EditorProps> = ({ editor }) => {
+
+const MenuBar: React.FC<EditorProps> = function ({ editor }) {
   const items: Item[] = [
     {
       icon: Bold,
@@ -165,9 +164,8 @@ const MenuBar: React.FC<EditorProps> = ({ editor }) => {
 
   return (
     <div className="editor__header">
-      {items.map((item, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <MenuItem key={index} {...(item as MenuItemProps)} isActive={item.isActive} />
+      {items.map((item) => (
+        <MenuItem key={item.title} {...(item as MenuItemProps)} isActive={item.isActive} />
       ))}
     </div>
   );

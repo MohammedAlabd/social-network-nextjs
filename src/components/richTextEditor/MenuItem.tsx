@@ -5,11 +5,14 @@ type MenuItemProps = {
   icon: string;
   title: string;
   action: () => void;
-  // eslint-disable-next-line react/require-default-props
   isActive?: () => boolean;
 };
 
-const MenuItem: React.FC<MenuItemProps> = function ({ icon, title, action, isActive }) {
+const defaultProps: Partial<MenuItemProps> = {
+  isActive: () => false,
+};
+
+const MenuItem: React.FC<MenuItemProps> = function ({ icon, title, action, isActive = defaultProps.isActive }) {
   return (
     <div className="tooltip tooltip-bottom" data-tip={title}>
       <button
@@ -23,5 +26,7 @@ const MenuItem: React.FC<MenuItemProps> = function ({ icon, title, action, isAct
     </div>
   );
 };
+
+MenuItem.defaultProps = defaultProps;
 
 export default MenuItem;
