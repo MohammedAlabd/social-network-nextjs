@@ -2,7 +2,6 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 
 export default function LoginBtn() {
-  //Will be used in auth
   const { data: session } = useSession();
   const { t } = useTranslation("common");
 

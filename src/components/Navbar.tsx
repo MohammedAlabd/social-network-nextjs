@@ -19,6 +19,7 @@ const Navbar = function (
             alt="Journey الرحلة logo"
             src="https://media1-production-mightynetworks.imgix.net/asset/56053552/JOURNEYUNCROPPED2-28.png?ixlib=rails-4.2.0&amp;auto=format&amp;w=150&amp;h=100&amp;fit=crop&amp;impolicy=Avatar&amp;crop=faces"
             width="60"
+            height="60"
           />
         </a>
       </div>
