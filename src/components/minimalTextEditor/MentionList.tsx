@@ -4,8 +4,9 @@ import { MentionListProps, MentionListRef } from './MiniamlTextEditor.Types.ts';
 const MentionList = forwardRef<MentionListRef, MentionListProps>((props, ref) => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
-  const selectItem = (index: number) => {
-    const item = props.items[index];
+  const handleSelectItem = (index: number) => {
+    const { items } = props;
+    const item = items[index];
 
     if (item) {
       props.command({ id: item });
@@ -21,7 +22,7 @@ const MentionList = forwardRef<MentionListRef, MentionListProps>((props, ref) =>
   };
 
   const enterHandler = () => {
-    selectItem(selectedIndex);
+    handleSelectItem(selectedIndex);
   };
 
   useEffect(() => setSelectedIndex(0), [props.items]);
@@ -55,7 +56,7 @@ const MentionList = forwardRef<MentionListRef, MentionListProps>((props, ref) =>
             type="button"
             className={`item ${index === selectedIndex ? 'is-selected' : ''}`}
             key={index}
-            onClick={() => selectItem(index)}
+            onClick={() => handleSelectItem(index)}
           >
             {item}
           </button>
