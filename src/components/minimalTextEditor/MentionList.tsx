@@ -1,13 +1,5 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
-
-type MentionListProps = {
-  items: string[];
-  command: (arg: { id: string }) => void;
-};
-
-type MentionListRef = {
-  onKeyDown: (event: React.KeyboardEvent) => boolean;
-};
+import { MentionListProps, MentionListRef } from './MiniamlTextEditor.Types.ts';
 
 const MentionList = forwardRef<MentionListRef, MentionListProps>((props, ref) => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);

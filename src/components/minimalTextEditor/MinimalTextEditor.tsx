@@ -7,11 +7,7 @@ import { EditorContent, useEditor } from '@tiptap/react';
 import DOMPurify from 'dompurify';
 import React, { useState } from 'react';
 import suggestion from './SuggestionList.tsx';
-
-type Props = {
-  onSubmit: (_content: string) => void;
-  placeholder?: string;
-};
+import { Props } from './MiniamlTextEditor.Types.ts';
 
 const MinimalTextEditor: React.FC<Props> = function ({ onSubmit, placeholder = 'comment', initialContent = '' }) {
   const [content, setContent] = useState('');
@@ -40,9 +36,6 @@ const MinimalTextEditor: React.FC<Props> = function ({ onSubmit, placeholder = '
       </button>
     </div>
   );
-};
-MinimalTextEditor.defaultProps = {
-  placeholder: 'comment',
 };
 
 export default MinimalTextEditor;

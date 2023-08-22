@@ -1,16 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-
-type MenuItemProps = {
-  icon: string;
-  title: string;
-  action: () => void;
-  isActive?: () => boolean;
-};
-
-const defaultProps: Partial<MenuItemProps> = {
-  isActive: () => false,
-};
+import { MenuItemProps, defaultProps } from './RichTextEditor.types.ts';
 
 const MenuItem: React.FC<MenuItemProps> = function ({ icon, title, action, isActive = defaultProps.isActive }) {
   return (

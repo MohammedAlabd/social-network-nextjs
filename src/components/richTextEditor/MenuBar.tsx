@@ -22,20 +22,7 @@ import HardBreak from '../../../public/media/icons/hardBreak.svg';
 import ClearFormat from '../../../public/media/icons/clearFormat.svg';
 import Undo from '../../../public/media/icons/undo.svg';
 import Redo from '../../../public/media/icons/redo.svg';
-
-type EditorProps = {
-  editor: any;
-};
-type MenuItemProps = {
-  icon: string;
-  title: string;
-  action: () => void;
-  isActive?: () => boolean;
-};
-
-type Item = MenuItemProps & {
-  type?: string | undefined;
-};
+import { MenuItemProps, EditorProps, Item } from './RichTextEditor.types.ts';
 
 const MenuBar: React.FC<EditorProps> = function ({ editor }) {
   const items: Item[] = [

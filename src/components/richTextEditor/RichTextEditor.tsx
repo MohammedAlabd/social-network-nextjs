@@ -8,12 +8,8 @@ import TaskList from '@tiptap/extension-task-list';
 import Highlight from '@tiptap/extension-highlight';
 import TextAlign from '@tiptap/extension-text-align';
 import Placeholder from '@tiptap/extension-placeholder';
-import MenuBar from './richTextEditor/MenuBar.tsx';
-
-type Props = {
-  onSubmit: (_content: string) => void;
-  placeholder?: string;
-};
+import MenuBar from './MenuBar';
+import { Props } from './RichTextEditor.types.ts';
 
 const RichTextEditor: React.FC<Props> = function ({ onSubmit, placeholder = 'Type anything', initialContent = '' }) {
   const [content, setContent] = useState('');
