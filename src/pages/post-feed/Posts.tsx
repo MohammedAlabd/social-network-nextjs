@@ -1,12 +1,13 @@
 import PostListItem from './postListItem';
-import { Post, posts } from './usersDummyData';
+import { posts } from './index';
+import { UserType } from './usersDummyData';
 
 export default function Posts() {
   return (
     <div>
       <div className="space-y-4">
-        {posts.map((post: Post) => (
-          <PostListItem key={post.id} post={post} />
+        {posts.map((post: UserType) => (
+          <PostListItem key={post.creator.id} post={post} />
         ))}
       </div>
     </div>
