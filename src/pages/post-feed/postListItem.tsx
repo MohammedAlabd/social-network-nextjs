@@ -2,27 +2,27 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { FacebookIcon, LinkedInIcon, TwitterIcon, EmailIcon, SandwichButton } from './icons';
-import { Post } from './usersDummyData';
+import { UserType } from './usersDummyData';
 
 type Props = {
-  post: Post;
+  post: UserType;
 };
 export default function PostListItem({ post }: Props) {
   const { t } = useTranslation('common');
   return (
     <div>
-      <div key={post.id} className="mx-20 rounded-lg bg-white p-4 shadow">
+      <div key={post.creator.id} className="mx-20 rounded-lg bg-white p-4 shadow">
         <div className="flex items-center">
           <Image
-            src={post.userPhoto}
+            src={post.creator.avatar}
             alt="Landscape picture"
             width={800}
             height={500}
             className="mask mask-squircle w-14"
           />
           <div className="flex flex-col">
-            <span className="ml-2">{post.username}</span>
-            <span className="ml-2 text-sm text-red-500">{post.userRank}</span>
+            <span className="ml-2">{post.creator.fullName}</span>
+            <span className="ml-2 text-sm text-red-500">{post.creator.userRank}</span>
           </div>
           <div className="navbar justify-end">
             <div className="dropdown-end dropdown">
@@ -77,12 +77,12 @@ export default function PostListItem({ post }: Props) {
                       </li>
                       <li>
                         <button type="button">
-                          {t('Block')} {post.username}
+                          {t('Block')} {post.creator.fullName}
                         </button>
                       </li>
                       <li>
                         <button type="button">
-                          {t('Report')} {post.username}
+                          {t('Report')} {post.creator.fullName}
                         </button>
                       </li>
                       <li>
@@ -98,9 +98,10 @@ export default function PostListItem({ post }: Props) {
             </div>
           </div>
         </div>
-        <div className="mt-2">{post.postText}</div>
+        <div className="mt-2">{post.title}</div>
+        <div className="mt-2">{post.body}</div>
         <Image
-          src={post.postPhoto}
+          src={post.image}
           alt="Landscape picture"
           width={800}
           height={500}
