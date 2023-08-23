@@ -2,10 +2,10 @@
 import Image from 'next/image';
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { UserType } from './usersDummyData';
+import { PickUserType } from './usersDummyData';
 
 type Props = {
-  user: UserType;
+  user: PickUserType;
 };
 
 export default function CreatPost({ user }: Props) {
@@ -17,7 +17,7 @@ export default function CreatPost({ user }: Props) {
           <div className="flex items-center ">
             <div className="p-4">
               <Image
-                src={user.userPhoto}
+                src={user.avatar}
                 alt="Landscape picture"
                 width={800}
                 height={500}
