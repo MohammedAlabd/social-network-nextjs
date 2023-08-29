@@ -26,29 +26,42 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+
 /* Blog List Style */
 .blog-preview {
-  padding: 10px 16px;
+  padding: 20px;
   margin: 20px 0;
-  border-bottom: 1px solid #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(198, 6, 6, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
   cursor: pointer;
 }
+
 .blog-preview:hover {
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 .blog-preview h2 {
-  font-size: 20px;
-  color: #f1356d;
-  margin-bottom: 8px;
+  font-size: 24px;
+  color: #111982;
+  margin-bottom: 10px;
 }
 
-.blog-preview h3{
+.blog-preview h3 {
   font-size: 16px;
-  color: #0d0e11;
-  padding: 12px;
+  color: #666;
+  line-height: 1.4;
 }
 
-.blog-preview p{
+.author {
   font-size: 14px;
-  color: #707070;
-} 
+  color: #777;
+  margin-top: 10px;
+}
+
+.date {
+  font-size: 12px;
+  font-style: italic;
+  color: #999;
+}
