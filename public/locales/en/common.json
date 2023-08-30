@@ -1,4 +1,17 @@
 {
-        "hello Team": "hello Team",
-        "hellopeople": "hello world"
+  "hello Team": "hello Team",
+  "hellopeople": "hello world",
+  "save post": "save post",
+  "mute post": "mute post",
+  "share": "share",
+  "more": "more",
+  "Hide from active feed": "Hide from active feed",
+  "Report post": "Report post",
+  "Block": "Block",
+  "Report": "Report",
+  "Hide space": "Hide space",
+  "copy post ID": "copy post ID",
+  "Lets GET STARTED WITH A QUESTION": "Lets GET STARTED WITH A QUESTION",
+  "What Would you Like to find in this community?": "What Would you Like to find in this community?",
+  "post": "post"
 }
