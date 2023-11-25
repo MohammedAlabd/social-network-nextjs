@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Bloglist from '@/comps/blogList';
 import { useState } from 'react';
-import getFormattedDate from '@/lib/getFormattedDate';
+import { blogsData } from '@/lib/blogData';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
@@ -14,29 +14,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 
 const Home = function (_props: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation('common');
-  const [blogs] = useState([
-    {
-      title: 'How to become better programer',
-      body: 'You can find many ways to be better programmer and here some of it',
-      author: 'Moe',
-      id: 1,
-      date: getFormattedDate(new Date()),
-    },
-    {
-      title: 'Most popular books about coding',
-      body: 'Learn how to code by practice',
-      author: 'Ahmed',
-      id: 2,
-      date: getFormattedDate(new Date()),
-    },
-    {
-      title: 'How to write clean code',
-      body: 'Clean code need a lot of time and l',
-      author: 'Ali',
-      id: 3,
-      date: getFormattedDate(new Date()),
-    },
-  ]);
+  const [blogs] = useState(blogsData);
 
   return (
     <main>
