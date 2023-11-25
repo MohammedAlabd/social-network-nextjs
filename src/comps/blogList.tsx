@@ -1,11 +1,11 @@
 function BlogList(props) {
-  const { blogs } = props;
-  const { title } = props;
+  const { blogsList } = props;
+  const { blogTitle } = props;
 
   return (
     <div className="blogList">
-      <h2> {title} </h2>
-      {blogs.map((blog) => (
+      <h2> {blogTitle} </h2>
+      {blogsList.map((blog) => (
         <div className="blog-preview" key={blog.id}>
           <h2 className="blogListTitle"> {blog.title}</h2>
           <h3 className="listBody"> {blog.body} </h3>

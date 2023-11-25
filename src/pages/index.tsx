@@ -22,7 +22,7 @@ const Home = function (_props: InferGetStaticPropsType<typeof getStaticProps>) {
         <h1 className="test-hello">{t('hello Team')}</h1>
         <h1 className="test-hello">{t('hellopeople')}</h1>
       </Head>
-      <Bloglist blogs={blogs} />
+      <Bloglist blogsList={blogs} />
     </main>
   );
 };
